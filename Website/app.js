@@ -10,13 +10,22 @@ function generateZip(){
     getWeatherInfo(url)
     //after data recived from API then store data(post data) in server
     .then(function(data){
-            //console.log(data)
-            postData('/',{ temp: data.temp,
+            console.log("hi Khushal");
+            postData('/add',{ temp: data.temp,
                 pressure:data.pressure,
                 humidity:data.humidity,
                 temp_min:data.temp_min,
-                temp_max:data.temp_max})        
-    });
+                temp_max:data.temp_max,
+                visibility:data.visibility,
+                timezone:data.timezone,
+                name:data.name       
+            
+            
+            
+            })  
+                console.log("postData")      ;
+    })
+    .then (updateUI())
 };
 
 //Get weather information from weather api using url
@@ -53,12 +62,20 @@ const postData = async (url = '' ,data ={}) =>{
       }
   }
 
-/* function generateInfo(){
-    console.log("hi");
-    //give server a request
-    //get data from server
-    //update UI
-    const zip = document.getElementById("zip").value;
-    alert(zip);
-    
-} */
+const updateUI = async() => {
+    const request = await fetch('/');
+    try{
+        const allData = await request.json();
+        document.getElementById('temp').innerHTML = allData[0].temp;
+        document.getElementById('pressure').innerHTML = allData[0].pressure;
+        document.getElementById('temp-min').innerHTML = allData[0].temp_min;
+        document.getElementById('temp-max').innerHTML = allData[0].temp_max;
+        document.getElementById('humidity').innerHTML = allData[0].humidity;
+        document.getElementById('visibility').innerHTML = allData[0].visibility;
+        document.getElementById('timezone').innerHTML = allData[0].timezone;
+        document.getElementById('name').innerHTML = allData[0].name;
+    }
+    catch(error){
+            console.log("error",error);
+    }
+}
