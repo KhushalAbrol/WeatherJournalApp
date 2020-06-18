@@ -3,14 +3,20 @@ body{
     font-family: -apple-system, BlinkMacSystemFont, sans-serif;
 
 }
+.headline{
+    text-shadow: 3px 3px 6px rgb(104, 104, 104);
+    grid-area: head;
+    font-size: 3rem;
+    margin:auto;
+}
 
 #app{
     display: grid;
-    grid-template-rows: 15vh 85vh;
+    grid-template-rows: 12vh 80vh;
     grid-template-areas: 
     "head"
     "main";
-    height:100vh;
+    height:100%;
     width:80vw;
     margin:auto;
     background: #e9e9e9;
@@ -24,18 +30,12 @@ body{
     box-shadow:         3px 3px 5px 6px #ccc;
 }
 
-.headline {
-    grid-area: head;
-    font-size: 3rem;
-    margin:auto;
-}
-
 #main{
     width:80vw;
     grid-area: main;
     display: grid;
     grid-template-columns: 2% 45% 6% 45% 2%;
-    grid-template-rows: 25vh 45vh 12vh 3vh;
+    grid-template-rows: 25vh 44vh 10vh 1vh;
     grid-template-areas: 
     "b zip m entry c"
     "b feel m entry c"
@@ -67,10 +67,13 @@ body{
         grid-area: ti;
 /*         background-color: lawngreen; */
         margin:auto;
-        color:black;
+        font-size: 2rem;
+        color:rgb(80, 80, 80);
+        text-shadow: 3px 3px 6px rgb(122, 122, 122);
         padding: auto;
     }
     #entryHolder{
+        padding-top:2rem;
         grid-area: en;
         display: grid;
         grid-template-columns:48% 4% 48% ;
@@ -80,37 +83,7 @@ body{
 
     #parameter{grid-area:pa;}
     #value{grid-area: va;}
-/* #entryHolder{
-    /* background-color: khaki; 
-    grid-area: en;
-    display:grid;
-    grid-template-columns: 3% 45% 4% 45% 3%;
-    grid-template-rows: 10% 10% 10% 10% 10% 10% 10% 10% ;
-    grid-area: 
-    "a name1 c b"
-    "a temp1 c b"
-    "a pres1 c b"
-    "a min1 c b"
-    "a max1 c b"
-    "a visi1 c b"
-    "a humi1 c b"
-    "a timez1 c b";
-}
 
- */
-
-
-/* 
-#name1{grid-area: name1;}
-#temp1{grid-area: temp1;}
-#pres1{grid-area: pres1;}
-#min1{grid-area: min1;}
-#max1{grid-area: max1;}
-#visi1{grid-area: visi1;}
-#humi1{grid-area: humi1;}
-#timez1{grid-area: timez1;}
-
- */
 
 .but{
     grid-area: but;
@@ -146,6 +119,24 @@ button{
     border: none;
     box-shadow: 2px 4px 5px #444;
 }
+
+button:hover{
+    background: #555555;
+    color: #e7e7e7;
+    -moz-box-shadow:    inset 0 0 10px #000000;
+    -webkit-box-shadow: inset 0 0 10px #000000;
+    box-shadow:         inset 0 0 10px #000000;
+}
+
+button:active{
+    background: #303030;
+    color: #b8b8b8;
+    text-shadow: 3px 2px 2px rgb(24, 24, 24);
+    -moz-box-shadow:    inset 0 0 10px #000000;
+    -webkit-box-shadow: inset 0 0 10px #000000;
+    box-shadow:         inset 0 0 10px #000000;
+}
+
 h1{
     font-size: 36px;
 }
@@ -154,9 +145,10 @@ h1{
 }
 textarea{
 /*     width: 282px; */
-width:100%;
-height:80%;
+width:92%;
+height:76%;
 margin:0 0 4% 0;
+padding:2% 4%;
     background:white;
     color: rgb(70, 70, 70);
     /* padding:10px 20px; */
@@ -183,13 +175,14 @@ button:focus {
 } 
   
 :-ms-input-placeholder { /* Internet Explorer 10-11 */ 
-    color: #f0d43a; 
+    color: gray; 
     font-family: 'Oswald', sans-serif;
+    text-align: center; 
 
 } 
   
 ::-ms-input-placeholder { /* Microsoft Edge */ 
-    color: #f0d43a; 
+    color: gray; 
     font-family: 'Oswald', sans-serif;
-
+    text-align: center; 
 } 
