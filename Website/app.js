@@ -5,17 +5,19 @@ document.getElementById('generate').addEventListener('click',generateZip);
 
 
 function generateZip(){
-    const zip=document.getElementById('zip').value;
-    const url = baseURL+"zip="+zip+apiKey;
+    const zipcode=document.getElementById('zip').value;
+    const url = baseURL+"zip="+zipcode+apiKey;
     getWeatherInfo(url)
     //after data recived from API then store data(post data) in server
     .then(function(data){
             //console.log("hi Khushal");
             //console.log( data.name );
             document.getElementById('zip').value="";
+            document.getElementById('feelings').value="";
             if(data.cod=="404"||data.message=="invalid zip code")
             
             {   document.getElementById('value').style.color="red";
+                document.getElementById("zipcode").innerHTML=zipcode;
                 document.getElementById('temp').innerHTML ="Record Not Found!!!";
                 document.getElementById('pressure').innerHTML ="Record Not Found!!!";
                 document.getElementById('temp-min').innerHTML ="Record Not Found!!!";
@@ -35,7 +37,8 @@ function generateZip(){
                                     temp_max:data.main.temp_max,
                                     visibility:data.visibility,
                                     timezone:data.timezone,
-                                    name:data.name         
+                                    name:data.name,
+                                    zip:zipcode         
             })
 //after the above task get completed then updateUI function executes:
     .then (function(){
@@ -85,14 +88,19 @@ const updateUI = async() => {
     try{
         const allData = await request.json();
         //console.log("updateUI working")
-        document.getElementById('temp').innerHTML = allData[0].temp;
-        document.getElementById('pressure').innerHTML = allData[0].pressure;
-        document.getElementById('temp-min').innerHTML = allData[0].temp_min;
-        document.getElementById('temp-max').innerHTML = allData[0].temp_max;
-        document.getElementById('humidity').innerHTML = allData[0].humidity;
-        document.getElementById('visibility').innerHTML = allData[0].visibility;
-        document.getElementById('timezone').innerHTML = allData[0].timezone;
-        document.getElementById('name').innerHTML = allData[0].name;
+        //console.log(allData[0].zip);
+        //Index takes last index of the data stored in the server
+        var index = allData.length-1;
+        document.getElementById('temp').innerHTML = allData[index].temp;
+        document.getElementById('pressure').innerHTML = allData[index].pressure;
+        document.getElementById('temp-min').innerHTML = allData[index].temp_min;
+        document.getElementById('temp-max').innerHTML = allData[index].temp_max;
+        document.getElementById('humidity').innerHTML = allData[index].humidity;
+        document.getElementById('visibility').innerHTML = allData[index].visibility;
+        document.getElementById('timezone').innerHTML = allData[index].timezone;
+        document.getElementById('name').innerHTML = allData[index].name;
+        document.getElementById("zipcode").innerHTML= allData[index].zip;
+        // console.log(allData);
     }
     catch(error){
             alert("error"+error);
