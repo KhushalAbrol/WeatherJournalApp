@@ -38,7 +38,8 @@ function storeWeatherData(req, res){
             temp_max:req.body.temp_max,
             name:req.body.name,
             visibility:req.body.visibility,
-            timezone:req.body.timezone
+            timezone:req.body.timezone,
+            zip:req.body.zip
     }        
     weatherData.push(newEntry);
     res.send(weatherData);
