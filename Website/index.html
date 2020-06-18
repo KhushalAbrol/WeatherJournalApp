@@ -7,32 +7,48 @@
 <link rel="stylesheet" href="style.css">
 </head>
  <body>
-<div id = "app">
-  <div class ="holder headline">
-    Weather Journal App
-  </div>
-  <div class ="holder zip">
-    <label for="zip">Enter Zipcode here</label>
-    <input type="text" id="zip" placeholder="enter zip code here">
-  </div>
-  <div class ="holder feel">
-    <label for="feelings">How are you feeling today?</label>
-    <textarea class= "myInput" id="feelings" placeholder="Enter your feelings here" rows="9" cols="50"></textarea>
-    <button id="generate" onclick="generateZip()" type = "submit"> Generate </button>
-  </div>
-  <div class ="holder entry">
-    <div class = "title">Most Recent Entry</div>
-   <div id = "entryHolder">
-    <div id = "name"></div> 
-   <div id = "temp"></div>
-   <div id = "pressure"></div>
-   <div id = "temp-min"></div> 
-   <div id = "temp-max"></div>
-   <div id = "visibility"></div>
-   <div id="humidity"></div>
-   <div id="timezone"></div>
-  </div>
-  </div>
+  <div id = "app">
+      <div class ="holder headline">
+        Weather Journal App
+      </div>
+      <div id="main">
+        <div class ="holder zip">
+          <label for="zip">Enter Zipcode here:</label>
+          <input type="text" id="zip" placeholder="Please Enter Zip Code Here">
+        </div>
+        <div class ="holder feel">
+          <label for="feelings">How are you feeling today?</label>
+          <textarea class= "myInput" id="feelings" placeholder="Enter your feelings here"></textarea>
+        </div>
+        <div class ="holder entry">
+            <div class = "title">Most Recent Entry</div>
+            <div id = "entryHolder">
+              <div id="parameter">
+                <div id = "name1">City Name:</div> 
+                <div id = "temp1">Temperature:</div>
+                <div id = "min1">Temperature(Min):</div> 
+                <div id = "max1">Temperature(max):</div>
+                <div id = "pres1">Pressure:</div>
+                <div id = "visi1">Visibility:</div>
+                <div id = "humi1">Humidity:</div>
+                <div id = "timez1">Timezome:</div>
+              </div>
+              <div id="value">
+                <div id = "name"></div> 
+                <div id = "temp"></div>
+                <div id = "temp-min"></div> 
+                <div id = "temp-max"></div>
+                <div id = "pressure"></div>
+                <div id = "visibility"></div>
+                <div id ="humidity"></div>
+                <div id ="timezone"></div>
+              </div>
+            </div>
+        </div>
+        <div class="but">
+          <button id="generate" onclick="generateZip()" type = "submit"> Generate </button>
+        </div>
+      </div>
   </div>
 <script src="app.js" type="text/javascript"></script>
 
